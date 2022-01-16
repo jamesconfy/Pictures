@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-grid.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+    <!-- Page Title -->
+    {% if title %}
+        <title> {{ title }}</title>
+    {% else%}
+        <title>Website</title>
+    {% endif %}
+</head>
+
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-1 col-sm-12">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ url_for('home') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About 1</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Disabled</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-10 col-sm-12">
+                <div>
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                    {% for category, msg in messages %}
+                    <div class="alert alert-{{ category}}">
+                        <p>{{msg}}</p>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+                    {% block content %} {% endblock %}
+                </div>
+            </div>
+            <div class="col-md-1 col-sm-12"></div>
+        </div>
+    </div>
+
+    <footer class="footer mt-4">
+        <div class="container">
+            <div class="foo">
+                <ul>
+                    <li><a href="https://wa.me/2348149795370" target="_blank">Whatsapp</a></li>
+                    <li><a href="https://twitter.com/jamesconfy" target="_blank">Twitter</a></li>
+                    <li><a href="https://instagram.com/jconfy" target="_blank">Instagram</a></li>
+                    <li><a href="https://www.facebook.com/jamesconfy8" target="_blank">Facebook</a></li>
+                    <li><a href="https://t.me/jamesconfy" target="_blank">Telegram</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
