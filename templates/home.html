@@ -8,7 +8,7 @@
     <p>What is Good</p>
     {% for image in images.items %}
     <div class="img">
-        <a href="#">
+        <a href="{{ url_for('viewImage', id=image.id) }}">
             <img class="m-4" src="{{ url_for('static', filename='pictures/' + image.image_file) }}" alt="An Image">
         </a>
     </div>

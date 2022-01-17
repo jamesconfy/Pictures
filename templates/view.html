@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="img">
+    <img class="m-4" src="{{ url_for('static', filename='pictures/' + image.image_file) }}" alt="An Image">
+    <h6>
+        {{ image.date_created.strftime('%d-%m-%Y') }}
+    </h6>
+    <div>
+        <a href="{{ url_for('deleteImage', id=image.id) }}">
+            Delete Image
+        </a>
+        <a href="{{ url_for('modifyImage', id=image.id) }}">
+            Modify Image
+        </a>
+    </div>
+</div>
+
+{% endblock %}
