@@ -164,6 +164,7 @@ cython_debug/
 !.vscode/launch.json
 !.vscode/extensions.json
 !.vscode/*.code-snippets
+!.vscode/*.workspace
 
 # Local History for Visual Studio Code
 .history/
@@ -203,6 +204,11 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# Custom files
+*create_db.py
+*Pictur.code-workspace
+
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,visualstudiocode,python
 
