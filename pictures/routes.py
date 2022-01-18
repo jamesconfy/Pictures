@@ -1,28 +1,8 @@
-from flask import Flask, render_template, request, flash, redirect, url_for
-from forms import ImageForm
-import os
-from utils import save_image
-from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
-
-DB_PASS = os.environ.get('DB_PASS')
-DB_USER = os.environ.get('DB_USER')
-DB_HOST = os.environ.get('DB_HOST')
-
-app = Flask(__name__)
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = os.environ.get('SQLALCHEMY_TRACK_MODIFICATIONS')
-app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{DB_USER}:{DB_PASS}@{DB_HOST}/pictures'
-
-db = SQLAlchemy(app)
-
-class ImageFile(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    date_created = db.Column(db.DateTime(120), default=datetime.utcnow)
-    image_file = db.Column(db.String(120), nullable=False)
-
-    def __repr__(self):
-        return f"User('{self.image_file}')"
+from flask import render_template, request, flash, redirect, url_for
+from pictures import app, db
+from pictures.forms import ImageForm
+from pictures.utils import save_image
+from pictures.models import ImageFile
 
 @app.route("/")
 @app.route("/home")
@@ -80,6 +60,3 @@ def modifyImage(id):
 
         flash(f'The file {form.img.data} is invalid')
     return render_template("upload.html", form=form, title="Modify Image")
-
-if __name__ == "__main__":
-    app.run(db.create_all())
