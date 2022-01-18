@@ -207,6 +207,7 @@ $RECYCLE.BIN/
 # Custom files
 *create_db.py
 *Pictur.code-workspace
+/pictures/static/pictures
 
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,visualstudiocode,python
